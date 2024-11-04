@@ -1,0 +1,41 @@
+{
+  "name": "markdown-to-html",
+  "displayName": "markdown-to-html",
+  "description": "Easily convert Markdown Files into HTML Code",
+  "version": "0.0.1",
+  "engines": {
+      "vscode": "^1.95.0"
+  },
+  "categories": [
+      "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+      "commands": [{
+          "command": "markdown-to-html.convert",
+          "title": "Convert Markdown to HTML"
+      }],
+      "menus": {
+          "editor/title": [{
+              "when": "editorLangId == markdown",
+              "command": "markdown-to-html.convert",
+              "group": "navigation"
+          }]
+      }
+  },
+  "scripts": {
+      "lint": "eslint .",
+      "pretest": "npm run lint",
+      "test": "vscode-test"
+  },
+  "devDependencies": {
+      "@types/mocha": "^10.0.9",
+      "@types/node": "20.x",
+      "@types/vscode": "^1.95.0",
+      "@vscode/test-cli": "^0.0.10",
+      "@vscode/test-electron": "^2.4.1",
+      "eslint": "^9.13.0",
+      "node-gyp": "^10.2.0"
+  }
+}
