@@ -9,3 +9,13 @@
 - I am also inside a list
 
 I am a Paragraph
+
+**I am Bold**
+
+*I am Italic*
+
+`I am Inline Code``
+
+```
+    I am a Code Block
+```

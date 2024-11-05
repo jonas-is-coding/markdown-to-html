@@ -18,7 +18,7 @@ std::string readFile(const std::string& filename) {
 }
 
 int main(int argc, char* argv[]) {
-    std::filesystem::path outputPath("./dist");
+    std::filesystem::path outputPath("./");
 
     if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <markdown-file>" << std::endl;
