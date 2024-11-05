@@ -46,9 +46,9 @@ public:
                 case MarkdownLineType::Link: {
                     std::regex linkRegex(R"(\[(.+?)\]\((.+?)\))");
                     line = std::regex_replace(line, linkRegex, "<a href=\"$2\">$1</a>");
-                }
                     html += line;
                     break;
+                }
                 case MarkdownLineType::ListItem:
                     if (line.substr(0, 2) == "- ") {
                         if (!inList) {
@@ -67,6 +67,31 @@ public:
                         html += "<p>" + line + "</p>\n";
                     }
                     break;
+                case MarkdownLineType::Bold: {
+                    std::regex boldRegex(R"((\*\*|__)(.*?)\1)");
+                    html += std::regex_replace(line, boldRegex, "<strong>$2</strong>\n");
+                    break;
+                }
+                case MarkdownLineType::Italic: {
+                    std::regex italicRegex(R"(\*(.+?)\*)");
+                    html += std::regex_replace(line, italicRegex, "<em>$1</em>\n");
+                    break;
+                }
+                case MarkdownLineType::CodeBlock:
+                    html += "<pre><code>";
+                    while (std::getline(stream, line)) {
+                        if (line.rfind("```", 0) == 0) {
+                            html += "</code></pre>\n";
+                            break;
+                        }
+                        html += line + "\n";
+                    }
+                    break;
+                case MarkdownLineType::InlineCode: {
+                    std::regex codeRegex(R"(`(.+?)`)");
+                    html += std::regex_replace(line, codeRegex, "<code>$1</code>");
+                    break;
+                }
                 case MarkdownLineType::Paragraph:
                     html += "<p>" + line + "</p>\n";
                     break;
