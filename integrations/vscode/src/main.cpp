@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 #include <filesystem>
-#include "../include/converter.h"
+#include "../include/converter.hpp"
 
 std::string readFile(const std::string& filename) {
     std::ifstream file(filename);

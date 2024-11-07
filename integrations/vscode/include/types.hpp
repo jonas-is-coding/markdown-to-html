@@ -22,7 +22,6 @@ enum class MarkdownLineType
 
 MarkdownLineType getLineType(const std::string &line)
 {
-    // Headings
     if (line.rfind("# ", 0) == 0)
         return MarkdownLineType::Heading1;
     if (line.rfind("## ", 0) == 0)
@@ -35,16 +34,13 @@ MarkdownLineType getLineType(const std::string &line)
         return MarkdownLineType::Heading5;
     if (line.rfind("###### ", 0) == 0)
         return MarkdownLineType::Heading6;
-    // List Items
     if (line.rfind("- ", 0) == 0)
         return MarkdownLineType::ListItem;
-    // Links
     std::regex linkRegex(R"(\[(.+?)\]\((.+?)\))");
     if (std::regex_search(line, linkRegex))
     {
         return MarkdownLineType::Link;
     }
-    // Bold and Italic
     std::regex boldRegex(R"((\*\*|__)(.*?)\1)");
     if (std::regex_search(line, boldRegex))
     {
@@ -55,7 +51,6 @@ MarkdownLineType getLineType(const std::string &line)
     {
         return MarkdownLineType::Italic;
     }
-    // Code Blocks and Inline Code
     if (line.rfind("```", 0) == 0)
     {
         return MarkdownLineType::CodeBlock;
@@ -65,10 +60,8 @@ MarkdownLineType getLineType(const std::string &line)
     {
         return MarkdownLineType::InlineCode;
     }
-    // Empty Line
     if (line.empty())
         return MarkdownLineType::Empty;
-    // Paragraph
     return MarkdownLineType::Paragraph;
 }
 

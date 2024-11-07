@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "../include/converter.h"
+#include "../include/converter.hpp"
 
 std::string readFile(const std::string& filename) {
     std::ifstream file(filename);
