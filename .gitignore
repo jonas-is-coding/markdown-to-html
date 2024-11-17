@@ -1,3 +1,6 @@
+/web/node_modules
+/web/.next
+
 .vscode
 /integrations/vscode/.vscode
 /integrations/vscode/node_modules

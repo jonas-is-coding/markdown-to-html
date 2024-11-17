@@ -36,7 +36,7 @@ markdown-converter/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/markdown-converter
+git clone https://github.com/jonas-is-coding/markdown-converter
 
 # Create build directory
 mkdir build && cd build
